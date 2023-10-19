@@ -11,7 +11,7 @@ pipeline {
         stage('Build and Deploy') {
             steps {
                 // Execute any build or deployment steps you need here
-                sh 'python app.py &'
+                bat 'python app.py'
             }
         }
     }
