@@ -4,14 +4,22 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Pull the code from your Git repository
                 checkout scm
             }
         }
         stage('Build and Deploy') {
             steps {
-                // Execute any build or deployment steps you need here
-                bat 'python app.py'
+                // Create a virtual environment
+                bat 'python -m venv venv'
+                
+                // Activate the virtual environment
+                bat 'venv\\Scripts\\activate'
+                
+                // Install Flask
+                bat 'pip install Flask'
+                
+                // Run the Flask application
+                bat 'python app.py &'
             }
         }
     }
